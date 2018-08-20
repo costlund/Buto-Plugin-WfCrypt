@@ -1,0 +1,24 @@
+settings:
+  fluit: true
+brand:
+  lable: 'Crypt'
+  href: "javascript: location.href = '/'+app.class+'/desktop';"
+navbar:
+  -
+    class: 'navbar-right'
+    element:
+      type: p
+      attribute:
+        class: 'navbar-text'
+      innerHTML: 'globals:_SESSION/email'
+  -
+    class: 'navbar'
+    item:
+      -
+        lable: Decrypt
+        href: "javascript: location.href = '/'+app.class+'/decrypt';"
+      -
+        lable: Encrypt
+        href: "javascript: location.href = '/'+app.class+'/encrypt';"
+    
+    

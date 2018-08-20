@@ -1,0 +1,60 @@
+settings:
+  layout:
+    - html
+    - main
+  title: Decrypt
+content:
+  
+  -
+    type: div
+    attribute:
+      class: col-md-12
+    innerHTML:
+      -
+        type: h1
+        innerHTML: 'Decrypt'
+  -
+    type: div
+    attribute:
+      class: col-md-6
+    innerHTML:
+      -
+        type: widget
+        data:
+          plugin: 'wf/form_v2'
+          method: render
+          data:
+            url: 'do_decrypt'
+            ajax_element: 'result'
+            ajax: true
+            submit_value: Do decrypt
+            id: frm_crypt
+            items:
+              key:
+                type: varchar
+                label: Key
+                mandatory: true
+                default: '1234'
+              text:
+                type: text
+                label: Text to decrypt
+                mandatory: true
+                default: ''
+                style: 'height:300px'
+              omit:
+                type: checkbox
+                label: Omit text
+            success_redirect: /page/home
+  -
+    type: div
+    attribute:
+      class: col-md-6
+    innerHTML:
+      -
+        type: strong
+        innerHTML: Result
+      -
+        type: div
+        attribute: {class: alert alert-success, id: result}
+        innerHTML: ''
+  

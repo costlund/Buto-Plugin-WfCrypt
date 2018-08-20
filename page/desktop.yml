@@ -1,0 +1,27 @@
+settings:
+  layout:
+    - html
+    - main
+  title: Developerhelper
+content:
+  json:
+    type: script
+    innerHTML: 
+  alert:
+    type: div
+    attribute:
+      class: col-md-12
+    innerHTML:
+      -
+        type: h1
+        innerHTML: Crypt
+      -
+        type: div
+        attribute:
+          class: alert alert-info
+        innerHTML:
+          -
+            type: p
+            innerHTML: This is a tool to encrypt/decrypt content. Text to handel should be on each row.
+    
+    
