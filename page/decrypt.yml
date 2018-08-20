@@ -4,7 +4,6 @@ settings:
     - main
   title: Decrypt
 content:
-  
   -
     type: div
     attribute:

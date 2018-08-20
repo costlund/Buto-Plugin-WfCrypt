@@ -1,6 +1,5 @@
 <?php
 class PluginWfCrypt{
-  
   function __construct($buto = false) {
     if($buto){
     }
@@ -18,12 +17,7 @@ class PluginWfCrypt{
     wfArray::set($GLOBALS, 'sys/layout_path', '/plugin/wf/crypt/layout');
     wfPlugin::includeonce('wf/array');
     $this->settings = new PluginWfArray(wfArray::get($GLOBALS, 'sys/settings/plugin_modules/'.wfArray::get($GLOBALS, 'sys/class').'/settings'));
-    /**
-     * Handle mysql param if string to yml file.
-     */
-    //$this->settings->set('mysql', wfSettings::getSettingsFromYmlString($this->settings->get('mysql')));
   }
-  
   public function page_desktop(){
     $this->init();
     $page = $this->getYml('page/desktop.yml');
@@ -110,8 +104,6 @@ class PluginWfCrypt{
      */
     exit;
   }
-  
-  
   private function getYml($file = 'element/_some_file.yml'){
     wfPlugin::includeonce('wf/yml');
     return new PluginWfYml('/plugin/wf/crypt/'.$file);
