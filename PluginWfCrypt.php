@@ -1,8 +1,12 @@
 <?php
 class PluginWfCrypt{
+  private $crypt = null;
   function __construct($buto = false) {
     if($buto){
     }
+    wfPlugin::includeonce('crypt/openssl');
+    $this->crypt = new PluginCryptOpenssl();
+    $this->crypt->data->set('passphrase', 'E0sjaFTC');
   }
   /**
   */
@@ -48,7 +52,7 @@ class PluginWfCrypt{
      */
     $data = array();
     foreach ($rows as $key => $value) {
-      $data[] = array('text' => $value, 'encrypt' => wfCrypt::encrypt($value, $crypt_key));
+      $data[] = array('text' => $value, 'encrypt' => $this->crypt->encrypt($value, $crypt_key));
     }
     /**
      * Show result in textarea.
@@ -80,11 +84,7 @@ class PluginWfCrypt{
      */
     $data = array();
     foreach ($rows as $key => $value) {
-      if(strlen($value) < 22){
-        $data[] = array('text' => $value, 'decrypt' => '_size_less_then_22_');
-      }else{
-        $data[] = array('text' => $value, 'decrypt' => wfCrypt::decrypt($value, $crypt_key));
-      }
+      $data[] = array('text' => $value, 'decrypt' => $this->crypt->decrypt($value, $crypt_key));
     }
     /**
      * Show result in textarea.
