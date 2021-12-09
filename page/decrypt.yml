@@ -29,6 +29,14 @@ content:
             submit_value: Do decrypt
             id: frm_crypt
             items:
+              method:
+                type: varchar
+                label: Method
+                mandatory: true
+                default: 'openssl'
+                option:
+                  'mcrypt': 'mcrypt (works only below PHP version 7.2)'
+                  'openssl': 'openssl'
               key:
                 type: varchar
                 label: Key

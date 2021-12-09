@@ -47,12 +47,17 @@ class PluginWfCrypt{
     $rows = preg_split("/\r\n/", wfRequest::get('text'));
     $crypt_key = wfRequest::get('key');
     $omit = wfRequest::get('omit');
+    $method = wfRequest::get('method');
     /**
      * Set data.
      */
     $data = array();
     foreach ($rows as $key => $value) {
-      $data[] = array('text' => $value, 'encrypt' => $this->crypt->encrypt($value, $crypt_key));
+      if($method=='openssl'){
+        $data[] = array('text' => $value, 'encrypt' => $this->crypt->encrypt($value, $crypt_key));
+      }elseif($method=='mcrypt'){
+        $data[] = array('text' => $value, 'encrypt' => wfCrypt::encrypt($value, $crypt_key));
+      }
     }
     /**
      * Show result in textarea.
@@ -79,12 +84,21 @@ class PluginWfCrypt{
     $rows = preg_split("/\r\n/", wfRequest::get('text'));
     $crypt_key = wfRequest::get('key');
     $omit = wfRequest::get('omit');
+    $method = wfRequest::get('method');
     /**
      * Set data.
      */
     $data = array();
     foreach ($rows as $key => $value) {
-      $data[] = array('text' => $value, 'decrypt' => $this->crypt->decrypt($value, $crypt_key));
+      if($method=='openssl'){
+        $data[] = array('text' => $value, 'decrypt' => $this->crypt->decrypt($value, $crypt_key));
+      }elseif($method=='mcrypt'){
+        if(strlen($value) < 22){
+          $data[] = array('text' => $value, 'decrypt' => '_size_less_then_22_');
+        }else{
+          $data[] = array('text' => $value, 'decrypt' => wfCrypt::decrypt($value, $crypt_key));
+        }
+      }
     }
     /**
      * Show result in textarea.

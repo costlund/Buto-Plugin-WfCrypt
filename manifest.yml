@@ -1,5 +1,9 @@
-version: 1.1.1
+version: 1.2.0
 history:
+  1.2.0:
+    date: '2021-12-09'
+    title: Methods
+    description: 'Put back support for mcrypt (works only below PHP version 7.2). Now supports openssl and mcrypt.'
   1.1.1:
     date: '2021-12-07'
     title: Versions
