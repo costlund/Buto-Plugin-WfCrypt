@@ -2,18 +2,11 @@
 class PluginWfCrypt{
   private $crypt = null;
   function __construct($buto = false) {
-    if($buto){
-    }
     wfPlugin::includeonce('crypt/openssl');
     $this->crypt = new PluginCryptOpenssl();
     $this->crypt->data->set('passphrase', 'E0sjaFTC');
   }
-  /**
-  */
   private $settings = null;
-  /**
-   <p>Init method.</p>
-   */
   private function init(){
     if(!wfUser::hasRole("webadmin")){
       exit('Role webadmin is required!');

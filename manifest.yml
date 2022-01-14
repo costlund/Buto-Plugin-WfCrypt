@@ -1,5 +1,9 @@
-version: 1.2.0
+version: 1.3.0
 history:
+  1.3.0:
+    date: '2021-01-14'
+    title: Plugin
+    description: 'Clean up by using plugin theme/include.'
   1.2.0:
     date: '2021-12-09'
     title: Methods

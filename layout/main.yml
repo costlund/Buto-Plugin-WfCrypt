@@ -1,15 +1,40 @@
 settings:
   path: 'container/innerHTML/row/innerHTML'
 content:
-  style1:
-    type: style
-    innerHTML: '.wf_form_row{margin-top:10px;}'
-  bootstrap_menu:
+  navbar:
     type: widget
     data:
-      plugin: 'wf/bootstrap'
-      method: menu
-      data: 'yml:/plugin/wf/crypt/menu/menu.yml'
+      plugin: 'bootstrap/navbar_v1'
+      method: navbar
+      data:
+        brand_href: /crypt/desktop
+        brand:
+          -
+            type: img
+            attribute:
+              src: /plugin/theme/include/icon/icon.png
+              style:
+                width: 24px
+                margin-top: -5px
+        navbar:
+          id: wf_crypt_navbar
+          item:
+            -
+              text: Encrypt
+              href: 'encrypt'
+            -
+              text: Decrypt
+              href: 'decrypt'
+          item_right:
+            -
+              type: text
+              text:
+                -
+                  type: small
+                  innerHTML: 'PHP version'
+                -
+                  type: small
+                  innerHTML: 'globals:sys/php/version'
   container:
     type: div
     attribute:
@@ -21,5 +46,3 @@ content:
         attribute:
           class: row
           style: "padding:10px"
-    
-    
