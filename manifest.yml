@@ -1,5 +1,9 @@
-version: 1.3.2
+version: 1.3.3
 history:
+  1.3.3:
+    date: '2022-09-27'
+    title: Versions
+    description: 'Versions update.'
   1.3.2:
     date: '2022-06-07'
     title: Versions
@@ -31,10 +35,10 @@ history:
 plugin:
   -
     name: wf/array
-    version: 1.2.3
+    version: 1.2.4
   -
     name: wf/yml
-    version: 1.4.0
+    version: 1.5.0
   -
     name: crypt/openssl
     version: 1.0.0
