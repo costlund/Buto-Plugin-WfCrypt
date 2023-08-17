@@ -11,7 +11,7 @@ class PluginWfCrypt{
     if(!wfUser::hasRole("webadmin")){
       exit('Role webadmin is required!');
     }
-    wfArray::set($GLOBALS, 'sys/layout_path', '/plugin/wf/crypt/layout');
+    wfGlobals::setSys('layout_path', '/plugin/wf/crypt/layout');
     wfPlugin::includeonce('wf/array');
     $this->settings = new PluginWfArray(wfArray::get($GLOBALS, 'sys/settings/plugin_modules/'.wfArray::get($GLOBALS, 'sys/class').'/settings'));
   }
@@ -86,7 +86,7 @@ class PluginWfCrypt{
       if($method=='openssl'){
         $data[] = array('text' => $value, 'decrypt' => $this->crypt->decrypt($value, $crypt_key));
       }elseif($method=='mcrypt'){
-        if(strlen($value) < 22){
+        if(wfPhpfunc::strlen($value) < 22){
           $data[] = array('text' => $value, 'decrypt' => '_size_less_then_22_');
         }else{
           $data[] = array('text' => $value, 'decrypt' => wfCrypt::decrypt($value, $crypt_key));
