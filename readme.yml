@@ -1,0 +1,51 @@
+readme:
+  name: Buto-Plugin-WfCrypt
+  description: |
+    Page plugin to encrypt and decrypt via form textarea input.
+  item:
+    -
+      name: Settings
+      description: |
+        ````
+        plugin_modules:
+          crypt:
+            plugin: 'wf/crypt'
+        ````
+    -
+      name: Usage
+      description: |
+        Open modal with start page.
+        ````
+        PluginWfBootstrapjs.modal({id: 'modal_crypt', url: '/crypt/desktop', label: 'Crypt', size: 'xl'});
+        ````
+    -
+      name: Pages
+      item:
+        -
+          name: page_decrypt
+        -
+          name: page_desktop
+        -
+          name: page_do_decrypt
+        -
+          name: page_do_encrypt
+        -
+          name: page_encrypt
+    -
+      name: Widgets
+      item: {  }
+    -
+      name: Event
+      item: {  }
+    -
+      name: Construct
+      item:
+        -
+          name: __construct
+    -
+      name: Methods
+      item:
+        -
+          name: init
+        -
+          name: getYml

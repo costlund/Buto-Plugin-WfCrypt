@@ -1,27 +1,42 @@
-settings:
-  layout:
-    - html
-    - main
-  title: Developerhelper
-content:
-  json:
-    type: script
-    innerHTML: 
-  alert:
-    type: div
-    attribute:
-      class: col-md-12
-    innerHTML:
-      -
-        type: h1
-        innerHTML: Crypt
-      -
-        type: div
-        attribute:
-          class: alert alert-info
-        innerHTML:
-          -
-            type: p
-            innerHTML: This is a tool to encrypt/decrypt content. Text to handel should be on each row.
-    
-    
+-
+  type: script
+  innerHTML: 
+-
+  type: div
+  attribute:
+    class: col-md-12
+  innerHTML:
+    -
+      type: div
+      attribute:
+        class: alert alert-info
+      innerHTML:
+        -
+          type: span
+          attribute:
+            style:
+              float: right
+          innerHTML: This is a tool to encrypt/decrypt content via plugin wf/crypt. Text to handel should be on each row.
+        -
+          type: a
+          attribute: 
+            class: btn btn-primary
+            onclick: PluginWfAjax.load('plugin_wf_crypt_desktop', '/crypt/encrypt')
+          innerHTML: Encrypt
+        -
+          type: a
+          attribute: 
+            class: btn btn-primary
+            onclick: PluginWfAjax.load('plugin_wf_crypt_desktop', '/crypt/decrypt')
+          innerHTML: Decrypt
+-
+  type: div
+  attribute:
+    class: col-md-12
+  innerHTML:
+    -
+      type: div
+      attribute:
+        id: plugin_wf_crypt_desktop
+        class: row
+      innerHTML:

@@ -1,67 +1,60 @@
-settings:
-  layout:
-    - html
-    - main
-  title: Encrypt
-content:
-  -
-    type: div
-    attribute:
-      class: col-md-12
-    innerHTML:
-      -
-        type: h1
-        innerHTML: 'Encrypt'
-  -
-    type: div
-    attribute:
-      class: col-md-6
-    innerHTML:
-      -
-        type: widget
+-
+  type: div
+  attribute:
+    class: col-md-12
+  innerHTML:
+    -
+      type: h1
+      innerHTML: 'Encrypt'
+-
+  type: div
+  attribute:
+    class: col-md-6
+  innerHTML:
+    -
+      type: widget
+      data:
+        plugin: form/form_v1
+        method: render
         data:
-          plugin: 'wf/form_v2'
-          method: render
-          data:
-            url: 'do_encrypt'
-            ajax_element: 'result'
-            ajax: true
-            submit_value: Do encrypt
-            id: frm_crypt
-            items:
-              method:
-                type: varchar
-                label: Method
-                mandatory: true
-                default: 'openssl'
-                option:
-                  'mcrypt': 'mcrypt (works only below PHP version 7.2)'
-                  'openssl': 'openssl'
-              key:
-                type: varchar
-                label: Key
-                mandatory: true
-                default: '1234'
-              text:
-                type: text
-                label: Text to encrypt
-                mandatory: true
-                default: ''
-                style: 'height:300px'
-              omit:
-                type: checkbox
-                label: Omit text
-            success_redirect: /page/home
-  -
-    type: div
-    attribute:
-      class: col-md-6
-    innerHTML:
-      -
-        type: strong
-        innerHTML: Result
-      -
-        type: div
-        attribute: {class: alert alert-success, id: result}
-        innerHTML: ''
-  
+          url: '/crypt/do_encrypt'
+          ajax_element: 'result'
+          ajax: true
+          submit_value: Do encrypt
+          id: frm_crypt
+          items:
+            method:
+              type: varchar
+              label: Method
+              mandatory: true
+              default: 'openssl'
+              option:
+                'mcrypt': 'mcrypt (works only below PHP version 7.2)'
+                'openssl': 'openssl'
+            key:
+              type: varchar
+              label: Key
+              mandatory: true
+              default: '1234'
+            text:
+              type: text
+              label: Text to encrypt
+              mandatory: true
+              default: ''
+              style: 'height:300px'
+            omit:
+              type: checkbox
+              label: Omit source
+          success_redirect: /page/home
+-
+  type: div
+  attribute:
+    class: col-md-6
+  innerHTML:
+    -
+      type: strong
+      innerHTML: Result
+    -
+      type: div
+      attribute: {class: alert alert-success, id: result}
+      innerHTML: ''

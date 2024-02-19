@@ -6,34 +6,22 @@ class PluginWfCrypt{
     $this->crypt = new PluginCryptOpenssl();
     $this->crypt->data->set('passphrase', 'E0sjaFTC');
   }
-  private $settings = null;
-  private function init(){
-    if(!wfUser::hasRole("webadmin")){
-      exit('Role webadmin is required!');
-    }
-    wfGlobals::setSys('layout_path', '/plugin/wf/crypt/layout');
-    wfPlugin::includeonce('wf/array');
-    $this->settings = new PluginWfArray(wfArray::get($GLOBALS, 'sys/settings/plugin_modules/'.wfArray::get($GLOBALS, 'sys/class').'/settings'));
-  }
   public function page_desktop(){
-    $this->init();
     $page = $this->getYml('page/desktop.yml');
-    $page = wfDocument::insertAdminLayout($this->settings, 1, $page);
-    wfDocument::mergeLayout($page->get());
+    wfDocument::renderElement($page->get());
   }
   public function page_encrypt(){
-    $this->init();
     $page = $this->getYml('page/encrypt.yml');
-    $page = wfDocument::insertAdminLayout($this->settings, 1, $page);
-    wfDocument::mergeLayout($page->get());
+    wfDocument::renderElement($page->get());
   }
   public function page_decrypt(){
-    $this->init();
     $page = $this->getYml('page/decrypt.yml');
-    $page = wfDocument::insertAdminLayout($this->settings, 1, $page);
-    wfDocument::mergeLayout($page->get());
+    wfDocument::renderElement($page->get());
   }
   public function page_do_encrypt(){
+    if(!wfRequest::get('text')){
+      exit('Text is missing!');
+    }
     /**
      * Vars.
      */
@@ -71,6 +59,9 @@ class PluginWfCrypt{
     exit;
   }
   public function page_do_decrypt(){
+    if(!wfRequest::get('text')){
+      exit('Text is missing!');
+    }
     /**
      * Vars.
      */
